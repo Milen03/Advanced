@@ -57,7 +57,12 @@ return alert('All fields are required!')
 }
 
 try{
-await create(data)
+await create({
+  type: data.type,
+  imageUrl: data['image-url'],
+  description: data.description,
+  learnMore: data['more-info']
+})
 page.redirect('/dashboard')
 }catch(err){
     alert(err.message)
