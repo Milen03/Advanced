@@ -65,7 +65,12 @@ async function editFormSubmitHandler(e) {
     
 
     try{
-        await edit(itemId,data)
+        await edit(itemId, {
+          type: data.type,
+          imageUrl: data['image-url'],
+          description: data.description,
+          learnMore: data['more-info']
+        })
 
         page.redirect(`/dashboard/${itemId}/details`)
     }catch(err){
